@@ -1,0 +1,5 @@
+.content{
+    background-color: #61dafb;
+    display: grid;
+    grid-template-rows: 48px 1fr;
+}

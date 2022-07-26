@@ -1,0 +1,32 @@
+.sidebar{
+
+    height: 100vh;
+
+}
+
+.logo{
+    height: 48px;
+    background: #4B84F4;
+    display: flex;
+    align-items: center;
+    padding-left: 17px;
+}
+.logo span{
+    margin-left: 10px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    color: #FFFFFF;
+}
+.colendar{
+    padding: 16px;
+}
+.create{
+    width: 160px;
+    height: 40px;
+    border: 1px solid #4B84F4;
+    border-radius: 10px;
+
+}
