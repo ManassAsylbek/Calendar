@@ -1,5 +1,6 @@
 .content{
-    background-color: #61dafb;
-    display: grid;
+     display: grid;
     grid-template-rows: 48px 1fr;
+    background: #F5F5F5;
+
 }

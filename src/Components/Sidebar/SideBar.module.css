@@ -28,5 +28,12 @@
     height: 40px;
     border: 1px solid #4B84F4;
     border-radius: 10px;
-
+    background-color: #FFFFFF;
+    cursor: pointer;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    color: #4B84F4;
 }

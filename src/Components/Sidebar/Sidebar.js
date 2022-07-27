@@ -9,7 +9,7 @@ const Sidebar = () => {
                 <span>Calendar</span>
             </div>
             <div className={style.colendar}>
-                <button className={style.create}><span>Создать</span></button>
+                <button className={style.create}>Создать</button>
             </div>
         </div>
     );

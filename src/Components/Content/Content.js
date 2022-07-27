@@ -1,12 +1,12 @@
 import React from 'react';
 import style from "./Content.module.css"
 import Header from "../Header/Header";
-import Colendar from "../Colenadar/Colendar";
+import Calendar from "../Colenadar/Calendar";
 const Content = () => {
     return (
         <div className={style.content}>
             <Header/>
-            <Colendar/>
+            <Calendar/>
         </div>
     );
 };
