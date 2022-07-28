@@ -9,9 +9,10 @@ const Main = () => {
     return (
         <div className={style.main}>
             <Sidebar/>
-            <Routes>
-                <Route  path="/colendar" element={<Content/>}/>
-            </Routes>
+            <Content/>
+            {/*<Routes>
+                <Route  path="/calendar" element={<Content/>}/>
+            </Routes>*/}
         </div>
     );
 };

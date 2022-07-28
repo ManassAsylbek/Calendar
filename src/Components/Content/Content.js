@@ -6,7 +6,10 @@ const Content = () => {
     return (
         <div className={style.content}>
             <Header/>
-            <Calendar/>
+            <div className={style.content_calendar}>
+
+            </div>
+
         </div>
     );
 };
