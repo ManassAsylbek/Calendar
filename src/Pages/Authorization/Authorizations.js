@@ -27,7 +27,7 @@ const Authorizations = () => {
                 </div>
             </div>
             <div className={style.right}>
-                <h1 className={style.title_right}>Calendar</h1>
+                <h2 className={style.title_right}>Calendar</h2>
                 <img src={logo} alt=""/>
             </div>
         </div>
