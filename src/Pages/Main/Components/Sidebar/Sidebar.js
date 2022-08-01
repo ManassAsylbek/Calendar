@@ -2,8 +2,8 @@ import React from 'react';
 import style from "./SideBar.module.css"
 import logoColendar from "../../../../Media/icons/logoColendar.svg"
 import addMarker from "../../../../Media/icons/addMarker.svg"
-import MiniCalendar from "../MiniCalendar/MiniCalendar";
-import {marker} from "../../../../Constants"
+import {marker} from "../../../../Constants/constants"
+import ContainerMiniCalendar from "../MiniCalendar/ContainerMiniCalendar";
 
 const Sidebar = () => {
     return (
@@ -17,7 +17,7 @@ const Sidebar = () => {
             </div>
 
             <div className={style.miniCalendar}>
-                <MiniCalendar className/>
+                <ContainerMiniCalendar className/>
             </div>
             <div className={style.box}></div>
 

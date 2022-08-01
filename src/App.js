@@ -4,9 +4,10 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Main from "./Pages/Main/Main";
 import Registration from "./Pages/Registration/Registration";
 import Authorizations from "./Pages/Authorization/Authorizations";
-import Day from "./Pages/Main/Components/Content/day/Day";
-import Week from "./Pages/Main/Components/Content/Week/Week";
 import Month from "./Pages/Main/Components/Content/Month/Month";
+import NotFound from "./Pages/NotFound/NotFound";
+import ContainerDay from "./Pages/Main/Components/Content/day/ContainerDay";
+import ContainerWeek from "./Pages/Main/Components/Content/Week/ContainerWeek";
 
 
 function App() {
@@ -15,12 +16,13 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Main/>}>
-                        <Route path="day" element={<Day/>}/>
-                        <Route path="week" element={<Week/>}/>
+                        <Route path="day" element={<ContainerDay/>}/>
+                        <Route path="week" element={<ContainerWeek/>}/>
                         <Route path="month" element={<Month/>}/>
                     </Route>
                     <Route path="/registration" element={<Registration/>}/>
                     <Route path="/authorizations" element={<Authorizations/>}/>
+                    <Route path="/notfound" element={<NotFound/>}/>
                 </Routes>
             </BrowserRouter>
         </>

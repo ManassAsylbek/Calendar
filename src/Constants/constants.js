@@ -20,13 +20,13 @@ export const times=[
     {id:10, time:"18:00" }
 ]
 export const day = {
-    time:0
+    time:"time1"
 }
 
 
 export const dayDate=(value)=>{
 
-    console.log((moment(value).format('DD dddd YYYY')))
-    day.time=moment(value).format('DD dddd YYYY')
-    console.log(day.time)
+    console.log((moment(value).format('DD MMMM YYYY - dddd')))
+    day.time=moment(value).format('DD MMMM YYYY - dddd')
+    console.log(typeof (day.time))
 }
