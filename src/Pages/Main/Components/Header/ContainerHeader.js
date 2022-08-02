@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 
 import Header from "./Header";
-import {selectDateAC} from "../../../../Redux/Reducer/mainReducer";
+import {dateDayAC, selectDateAC} from "../../../../Redux/Reducer/mainReducer";
 
 
 
@@ -16,6 +16,9 @@ let mapDispatchToProps = (dispatch) => {
     return {
         onSetSelectDate: (value) => {
             dispatch(selectDateAC(value))
+        },
+        onTodayDate: (date) => {
+            dispatch(dateDayAC(date))
         }
     }
 }

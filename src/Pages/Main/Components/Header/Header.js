@@ -11,16 +11,24 @@ import moment from "moment";
 
 
 const Header = (props) => {
+
+
     const day =moment(props.date).format('DD MMMM YYYY - dddd')
 
     const setValue = (e) =>{
         props.onSetSelectDate(e.target.value)
     }
+    const setTodayDate = () =>{
+        let date = new Date();
+        props.onTodayDate(moment(date))
+    }
+
+
 
     return (
         <div className className={style.header}>
             <div className={style.left}>
-                <button className={style.today}>Сегодня</button>
+                <button className={style.today} onClick={setTodayDate}>Сегодня</button>
                 <select className={style.day} id="" onChange={setValue}>
                     <option value="day">День</option>
                     <option value="week">Неделя</option>
