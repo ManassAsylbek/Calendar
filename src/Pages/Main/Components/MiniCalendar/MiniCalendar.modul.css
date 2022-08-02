@@ -1,4 +1,3 @@
-body > div:nth-child(3)
 
 .ant-picker-date-panel{
     position: absolute!important;
@@ -137,9 +136,11 @@ body > div:nth-child(3)
     left:16px!important;
 }
 
+/*
 .ant-picker-footer{
     display: none;
 }
+*/
 
 [type=submit]:not(:disabled), button:not(:disabled) {
     cursor: pointer;

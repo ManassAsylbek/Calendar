@@ -16,13 +16,13 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Main/>}>
-                        <Route path="day" element={<ContainerDay/>}/>
+                       {/* <Route path="day" element={<ContainerDay/>}/>
                         <Route path="week" element={<ContainerWeek/>}/>
-                        <Route path="month" element={<Month/>}/>
+                        <Route path="month" element={<Month/>}/>*/}
                     </Route>
                     <Route path="/registration" element={<Registration/>}/>
                     <Route path="/authorizations" element={<Authorizations/>}/>
-                    <Route path="/notfound" element={<NotFound/>}/>
+                    <Route path="/*" element={<NotFound/>}/>
                 </Routes>
             </BrowserRouter>
         </>

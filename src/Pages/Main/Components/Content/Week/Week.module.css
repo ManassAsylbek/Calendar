@@ -42,7 +42,7 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
-    margin: 0 0 0 4px;
+    margin: 0;
     color: rgba(255, 255, 255, 0.8);
 }
 
@@ -95,12 +95,12 @@
     text-align: center;
     color: #2E2E2E;
 }
-
+/*
 .hour_items div {
     border-left: 1px solid rgba(35, 35, 35, .1);
 }
 
-/*.hour_items div:hover {
+.hour_items div:hover {
     background-color: #F9F9F9;
 }*/
 .day_items{

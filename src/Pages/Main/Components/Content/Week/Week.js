@@ -12,10 +12,9 @@ const Week = (props) => {
         d = moment(props.date).weekday(i)
         wn.push(moment(d).format('DD'))
         wd.push(moment(d).format('dd'))
-
     }
-    console.log(wn)
-    console.log(wd)
+   /* console.log(wn)
+    console.log(wd)*/
 
 
     return (

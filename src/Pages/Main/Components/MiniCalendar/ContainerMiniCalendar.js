@@ -1,5 +1,5 @@
-import "./MiniCalendar.modul.css"
-import React, {useState} from 'react';
+
+import React from 'react';
 import 'moment/locale/ru';
 import {connect} from "react-redux";
 import MiniCalendar from "./MiniCalendar";

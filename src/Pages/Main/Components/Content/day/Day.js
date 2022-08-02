@@ -7,17 +7,6 @@ const Day = (props) => {
 
     const day = moment(props.date).format('dd')
     const date = moment(props.date).format('DD')
-   /* let wn = [];
-    let wd=[]
-    let d;
-    for (let i = 0; i < 7; i++) {
-        d=moment(props.date).weekday(i)
-        wn.push(moment(d).format('DD'))
-        wd.push(moment(d).format('dd'))
-
-    }
-    console.log(wn)
-    console.log(wd)*/
 
 
     return (

@@ -41,6 +41,7 @@
 
     height: 100%;
     display: grid;
+    justify-items: center;
     align-content: center;
     width: 304px;
     align-self: center;
@@ -61,4 +62,9 @@
 
 .right img{
     width: 320px;
+}
+.notFound button{
+    border:1px solid #979797;
+    border-radius: 7px;
+    padding: 4px 16px;
 }
