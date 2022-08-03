@@ -1,15 +1,17 @@
-@import '~antd/dist/antd.css';
-.ant-picker-date-panel{
+/*@import '~antd/dist/antd.css';*/
+
+
+.calendar/*.ant-picker-date-panel*/{
     position: absolute!important;
-    top:-30px!important;
+    top:115px!important;
     left:16px!important;
 }
 
-.datePicker{
+.calendar.datePicker{
     padding-left: 5px;
 }
 
-.ant-picker-dropdown{
+.calendar/*.ant-picker-dropdown*/{
     width: 168px;
     height: 160px;
 }
@@ -58,15 +60,15 @@
     width: 100% !important;
     table-layout: auto !important;
 }
-.ant-picker-month-panel .ant-picker-content {
-    height: 174px !important;
+.calendar{
+    height: 180px !important;
 }
 .ant-picker-header {
     border:none !important;
     padding: 0 5px !important;
 }
-.ant-picker-content th, .ant-picker-content td{
-    font-size: 13px !important;
+.calendar th, .calendar td{
+    font-size: 14px /*!important;*/
 }
 .ant-picker-content th{
     font-size: 12px !important;
@@ -146,3 +148,12 @@
     cursor: pointer;
 }
 
+.ant-picker-cell-in-view.ant-picker-cell-today .ant-picker-cell-inner::before{
+content: none
+}
+.ant-picker-header-view button:not(:disabled) {
+
+}
+.ant-picker-month-btn{
+    --bs-btn-disabled-bg: disabled;
+}
