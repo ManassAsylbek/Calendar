@@ -9,6 +9,7 @@ const SELECT_VALUE = "SELECT_VALUE";
 let initialState = {
     date:moment(new Date()),
     selectDate:<ContainerDay/>,
+    selectCalendar:"day"
 }
 
 const mainReducer = (state = initialState, action) => { //используем в нвчале
@@ -19,15 +20,14 @@ const mainReducer = (state = initialState, action) => { //используем �
             return {...state, date: action.date} /*каждый раз будет добовлять новыю дату*/
 
         case SELECT_VALUE:
-         /*   return {...state, selectDate: action.value}*/
             if(action.value==="day"){
-                return {...state,  selectDate:<ContainerDay/>}
+                return {...state,  selectDate:<ContainerDay/>,selectCalendar:"day"}
             }
             if(action.value==="week"){
-                return {...state,  selectDate:  <ContainerWeek/>}
+                return {...state,  selectDate:  <ContainerWeek/>,selectCalendar:"week"}
             }
             if(action.value==="month"){
-                return {...state,  selectDate: "month"/*<Calendar/>*/}
+                return {...state,  selectDate: "month"/*<Calendar/>*/,selectCalendar:"month"}
             }
 
         default:

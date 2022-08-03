@@ -1,5 +1,5 @@
 import {DatePicker, Space} from 'antd';
-import style from "./MiniCalendar.modul.css"
+import style from "./MiniCalendar.module.css"
 
 import React, {useState} from 'react';
 import 'moment/locale/ru';
@@ -17,11 +17,11 @@ const MiniCalendar = (props) => {
     return (
         <DatePicker
             dropdownClassName="calendar"
-            defaultValue={moment(props.date)}
+            defaultValue={props.date}
             showToday={false}
             locale={locale}
             open={true}
-            onChange={onDate}
+            onSelect={onDate}
         />
     );
 };

@@ -10,6 +10,7 @@ import {dateDayAC, selectDateAC} from "../../../../Redux/Reducer/mainReducer";
 let mapStateToProps = (state) => {
     return {
         date:state.mainPage.date,
+        selectCalendar:state.mainPage.selectCalendar,
     }
 }
 let mapDispatchToProps = (dispatch) => {
@@ -17,7 +18,7 @@ let mapDispatchToProps = (dispatch) => {
         onSetSelectDate: (value) => {
             dispatch(selectDateAC(value))
         },
-        onTodayDate: (date) => {
+        onChangeDate: (date) => {
             dispatch(dateDayAC(date))
         }
     }

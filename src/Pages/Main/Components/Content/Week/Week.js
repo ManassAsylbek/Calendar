@@ -7,11 +7,16 @@ import moment from "moment";
 const Week = (props) => {
     let wn = [];
     let wd = []
+    let dM;
     let d;
+    console.log(moment(props.date))
+
     for (let i = 0; i < 7; i++) {
         d = moment(props.date).weekday(i)
         wn.push(moment(d).format('DD'))
         wd.push(moment(d).format('dd'))
+
+
     }
    /* console.log(wn)
     console.log(wd)*/

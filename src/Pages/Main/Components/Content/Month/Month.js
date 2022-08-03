@@ -1,6 +1,8 @@
 import React from 'react';
 
-const Month = () => {
+const Month = (props) => {
+    let md=[]
+
     return (
         <div>
             Month
