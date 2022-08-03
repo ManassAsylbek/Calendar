@@ -1,10 +1,14 @@
+
+import React from "react";
+import ContainerDay from "../../Pages/Main/Components/Content/day/ContainerDay";
+import ContainerWeek from "../../Pages/Main/Components/Content/Week/ContainerWeek";
 import moment from "moment";
-
-const DATE_DAY="DATE_DAY";
-
+const DATE_DAY = "DATE_DAY";
+const SELECT_VALUE = "SELECT_VALUE";
 
 let initialState = {
-    date:"08.01.2022"
+    date:moment(new Date()),
+    selectDate:<ContainerDay/>,
 }
 
 const mainReducer = (state = initialState, action) => { //используем в нвчале
@@ -12,9 +16,19 @@ const mainReducer = (state = initialState, action) => { //используем �
     switch (action.type) {
 
         case DATE_DAY:
-         /*   action.date=moment(action.date).format('DD MMMM YYYY - dddd')*/
-            return {...state, date: action.date} /*каждый раз будет добовлять новых юзеров*/
+            return {...state, date: action.date} /*каждый раз будет добовлять новыю дату*/
 
+        case SELECT_VALUE:
+         /*   return {...state, selectDate: action.value}*/
+            if(action.value==="day"){
+                return {...state,  selectDate:<ContainerDay/>}
+            }
+            if(action.value==="week"){
+                return {...state,  selectDate:  <ContainerWeek/>}
+            }
+            if(action.value==="month"){
+                return {...state,  selectDate: "month"/*<Calendar/>*/}
+            }
 
         default:
             return state;
@@ -23,6 +37,8 @@ const mainReducer = (state = initialState, action) => { //используем �
 
 
 export const dateDayAC = (date) => ({type: DATE_DAY, date})
+export const selectDateAC = (value) => ({type: SELECT_VALUE, value})
+/*export const todayDateAC = (date) => ({type: SELECT_VALUE, date})*/
 
 export default mainReducer;
 

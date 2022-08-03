@@ -22,7 +22,6 @@ const MiniCalendar = (props) => {
             locale={locale}
             open={true}
             onChange={onDate}
-
         />
     );
 };
