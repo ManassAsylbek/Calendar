@@ -1,10 +1,9 @@
 import {DatePicker, Space} from 'antd';
 import style from "./MiniCalendar.css"
-
-import React, {useState} from 'react';
+import React from 'react';
 import 'moment/locale/ru';
 import locale from 'antd/es/date-picker/locale/ru_RU';
-import moment from "moment";
+
 
 
 const MiniCalendar = (props) => {
@@ -22,7 +21,6 @@ const MiniCalendar = (props) => {
             locale={locale}
             open={true}
             onSelect={onDate}
-            /*dropdownClassName={style.calendar}*/
             popupStyle={style.calendar}
             onPanelChange={onDate}
             value={props.date}
