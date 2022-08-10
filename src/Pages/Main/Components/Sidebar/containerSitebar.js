@@ -1,8 +1,6 @@
-import React, {useState} from 'react';
+import {eventAC} from "../../../../Redux/Reducer/mainReducer";
 import {connect} from "react-redux";
-import Day from "./Day";
-import {dateDayAC, eventAC, timeAC} from "../../../../../Redux/Reducer/mainReducer";
-
+import Sidebar from "./Sidebar";
 
 
 let mapStateToProps = (state) => {
@@ -16,13 +14,10 @@ let mapDispatchToProps = (dispatch) => {
         setActive: (boolean) => {
             dispatch(eventAC(boolean))
         },
-        onChangeDate: (date) => {
+        /*onChangeDate: (date) => {
             dispatch(dateDayAC(date))
-        },
-        setTime: (time) => {
-            dispatch(timeAC(time))
-        }
+        }*/
     }
 }
-const ContainerDay=connect(mapStateToProps,mapDispatchToProps)(Day)
-export default ContainerDay;
+const ContainerSidebar = connect(mapStateToProps,mapDispatchToProps)(Sidebar)
+export default ContainerSidebar;

@@ -7,8 +7,8 @@ const Day = (props) => {
 
     const day = moment(props.date).format('dd')
     const date = moment(props.date).format('DD')
-
-
+    let c="09:00"
+    console.log(+c.split(":")[0]+1)
     return (
         <div className={style.day}>
             <div className={style.title}>
@@ -20,7 +20,13 @@ const Day = (props) => {
                     {times.map((t)=><div key={t.id}>{t.time}</div>)}
                 </div>
                 <div className={style.hours_items} >
-                    {times.map((t)=><div key={t.id}></div>)}
+                    {
+                        times.map((t)=><div onClick={()=>props.setTime(t.time)}>
+                        <div key={t.id} onClick={() =>props.setActive(true)}>
+
+                        </div>
+                    </div>)
+                    }
 
                 </div>
             </div>

@@ -1,6 +1,10 @@
-import {Badge, Calendar} from 'antd';
+import {Badge, Calendar, DatePicker} from 'antd';
 import React from 'react';
-import "./Calendar.module.css"
+
+import "./Calendar.css"
+import 'moment/locale/ru';
+import locale from 'antd/es/calendar/locale/ru_RU';
+import ContainerNewEventModal from "../../../../Components/newEventModal/ContainerNewEventModal";
 
 const getListData = (value) => {
     let listData;
@@ -77,7 +81,7 @@ const getMonthData = (value) => {
     }
 };
 
-const App = () => {
+const App = (props) => {
     const monthCellRender = (value) => {
         const num = getMonthData(value);
         return num ? (
@@ -101,8 +105,27 @@ const App = () => {
         );
     };
 
-    return <Calendar dateCellRender={dateCellRender} monthCellRender={monthCellRender}/>;
+    let onDate = (date) => {
+        props.onSetDate(date)
+    };
+
+    return (
+        <div>
+            <Calendar
+                className="calendar_table"
+                value={props.date}
+                locale={locale}
+                onChange={onDate}
+                onSelect={() => props.setActive(true)}
+                mode="month"
+                fullscreen={true}
+                dateCellRender={dateCellRender}
+                monthCellRender={monthCellRender}/>;
+            {
+                props.newEventActive && <ContainerNewEventModal/>
+            }
+        </div>
+    )
 };
 
-
-export default Calendar;
+export default App;

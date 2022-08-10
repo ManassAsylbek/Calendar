@@ -6,6 +6,15 @@ export const marker=[
     {id:3, color:"#8A75FA", name:"Мероприятия"},
     {id:4, color:"#FFD480", name:"Проекты"}
 ]
+export const repeat = [
+    {id:1,  item:"Не повторять" },
+    {id:2,  item:"Ежедневно" },
+    {id:3,  item:"По будням (Пн-Пт)" },
+    {id:4,  item:"Еженедельно(среда)" },
+    {id:5,  item:"Ежемесячно" },
+    {id:6,  item:"Ежегодно" },
+    {id:7,  item:"Период повторения" },
+]
 
 export const times=[
     {id:1,  time:"09:00" },

@@ -5,7 +5,7 @@ const Month = (props) => {
 
     return (
         <div>
-            Month
+
         </div>
     );
 };

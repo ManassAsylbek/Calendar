@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import style from "./Header.module.css"
 import leftArrow from "../../../../Media/icons/left_arrow.svg"
 import rightArrow from "../../../../Media/icons/right_arrow.svg"
@@ -12,7 +12,8 @@ import moment from "moment";
 
 const Header = (props) => {
     let date
-        if(props.selectCalendar==="day") {
+
+    if(props.selectCalendar==="day") {
         date = moment(props.date).format('DD MMMM YYYY - dddd')
     }
     if(props.selectCalendar==="week") {
@@ -71,7 +72,11 @@ const Header = (props) => {
                 <button className={style.btnArrowLeft} onClick={prevDate}><img src={leftArrow} alt="стрелка влево"/></button>
                 <button className={style.btnArrowRight} onClick={nextDate}><img src={rightArrow} alt="стрелка вправо"/></button>
                 <span className={style.date}>{date}</span>
+
             </div>
+
+
+
             <div className={style.right}>
                 <button className={style.search}><img src={search} alt=""/></button>
                 <button className={style.bell}><img src={bell} alt=""/></button>

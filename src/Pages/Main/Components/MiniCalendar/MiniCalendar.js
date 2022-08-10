@@ -1,5 +1,6 @@
-import {DatePicker, Space} from 'antd';
-import style from "./MiniCalendar.css"
+import {DatePicker} from 'antd';
+import "./MiniCalendar.css"
+/*import '../Calenadar/Calendar.css'*/
 import React from 'react';
 import 'moment/locale/ru';
 import locale from 'antd/es/date-picker/locale/ru_RU';
@@ -15,15 +16,17 @@ const MiniCalendar = (props) => {
 
     return (
         <DatePicker
-            dropdownClassName="calendar"
-            defaultValue={props.date}
+            dropdownClassName="calendarBar"
+            ClassName="calendarSitebar"
             showToday={false}
             locale={locale}
             open={true}
             onSelect={onDate}
-            popupStyle={style.calendar}
+          /*  popupStyle={{tableLayout:"auto"}}*/
             onPanelChange={onDate}
             value={props.date}
+            mode="date"
+            style={{visibility: "hidden",background: 'transparent',zIndex:1}}
         />
     );
 };

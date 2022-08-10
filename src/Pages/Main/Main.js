@@ -1,13 +1,13 @@
 import React from 'react';
 import style from "./Main.module.css"
-import Sidebar from "./Components/Sidebar/Sidebar";
-import Content from "./Components/Content/Content";
+
 import ContainerContent from "./Components/Content/ContainerContent";
+import ContainerSidebar from "./Components/Sidebar/containerSitebar";
 
 const Main = () => {
     return (
         <div className={style.main}>
-            <Sidebar/>
+            <ContainerSidebar/>
             <ContainerContent/>
         </div>
     );

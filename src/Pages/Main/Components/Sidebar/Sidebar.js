@@ -1,11 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import style from "./SideBar.module.css"
 import logoColendar from "../../../../Media/icons/logoColendar.svg"
 import addMarker from "../../../../Media/icons/addMarker.svg"
 import {marker} from "../../../../Constants/constants"
 import ContainerMiniCalendar from "../MiniCalendar/ContainerMiniCalendar";
 
-const Sidebar = () => {
+import ContainerNewEventModal from "../../../../Components/newEventModal/ContainerNewEventModal";
+
+const Sidebar = (props) => {
     return (
         <div className={style.sidebar}>
             <div className={style.logo}>
@@ -13,24 +15,21 @@ const Sidebar = () => {
                 <span>Calendar</span>
             </div>
             <div className={style.calendar}>
-                <button className={style.create}>Создать</button>
+                <button className={style.create} onClick={()=>props.setActive(true)}>Создать</button>
             </div>
 
             <div className={style.miniCalendar}>
-                <ContainerMiniCalendar className/>
+                <ContainerMiniCalendar/>
             </div>
             <div className={style.box}></div>
 
             <div className={style.addMarker}><span>Мои метки</span><button><img src={addMarker} alt=""/></button></div>
-        {/*    <div className={style.markPink}><span></span><span>Личный</span></div>
-            <div className={style.markGreen}><span></span><span>Рабочий</span></div>
-            <div className={style.markBlue}><span></span><span>Мероприятия</span></div>
-            <div className={style.markYellow}><span></span><span>Проекты</span></div>*/}
             {marker.map(m=>
                 <div key={m.id} className={style.mark}>
                     <div style={{backgroundColor:m.color}}></div>
                     <span>{m.name}</span>
                 </div>)}
+            {props.newEventActive && <ContainerNewEventModal/>}
         </div>
     );
 };

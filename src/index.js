@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import 'antd/dist/antd.css'
 import "antd/es/calendar/style/index.css"
+import "antd/lib/calendar/style/index.css"
 import reportWebVitals from './reportWebVitals';
 import {Provider} from "react-redux";
 import store from './Redux/ReaduxStore';
