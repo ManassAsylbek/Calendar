@@ -7,8 +7,6 @@ const Day = (props) => {
 
     const day = moment(props.date).format('dd')
     const date = moment(props.date).format('DD')
-    let c="09:00"
-    console.log(+c.split(":")[0]+1)
     return (
         <div className={style.day}>
             <div className={style.title}>

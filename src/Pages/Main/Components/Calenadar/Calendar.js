@@ -5,6 +5,7 @@ import "./Calendar.css"
 import 'moment/locale/ru';
 import locale from 'antd/es/calendar/locale/ru_RU';
 import ContainerNewEventModal from "../../../../Components/newEventModal/ContainerNewEventModal";
+import moment from "moment";
 
 const getListData = (value) => {
     let listData;
@@ -107,6 +108,7 @@ const App = (props) => {
 
     let onDate = (date) => {
         props.onSetDate(date)
+        console.log(moment('08.2022').format('YYYY-MMMM'))
     };
 
     return (
@@ -120,7 +122,7 @@ const App = (props) => {
                 mode="month"
                 fullscreen={true}
                 dateCellRender={dateCellRender}
-                monthCellRender={monthCellRender}/>;
+                monthCellRender={monthCellRender}/>
             {
                 props.newEventActive && <ContainerNewEventModal/>
             }

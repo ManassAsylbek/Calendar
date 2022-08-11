@@ -32,7 +32,7 @@ const mainReducer = (state = initialState, action) => { //используем �
             return {...state, time:{...state.time,startTime:action.startTime,endTime:action.endTime}}*/
         case TIME:
             return {
-                ...state, startTime:action.time,endTime: `${+action.time.split(':')[0]+1}:00`
+                ...state, startTime:action.time,endTime:action.time==="18:00" ? "18:00" :`${+action.time.split(':')[0]+1}:00`
 
             }
         case SELECT_VALUE:

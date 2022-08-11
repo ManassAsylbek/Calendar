@@ -8,14 +8,9 @@ const Content = (props) => {
         <div className={style.content}>
             <ContainerHeader day={day}/>
             <div className={style.content_calendar}>
-                <div> {props.selectDate}</div>
-
-
-                {/*   <Day/>*/}
+                {props.selectDate}
             </div>
-
         </div>
     );
 };
-
 export default Content;
