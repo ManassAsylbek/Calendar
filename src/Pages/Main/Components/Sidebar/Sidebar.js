@@ -6,6 +6,7 @@ import {marker} from "../../../../Constants/constants"
 import ContainerMiniCalendar from "../MiniCalendar/ContainerMiniCalendar";
 
 import ContainerNewEventModal from "../../../../Components/newEventModal/ContainerNewEventModal";
+import ContainerEditEventModal from "../../../../Components/editEventModal/ContainerEditEventModal";
 
 const Sidebar = (props) => {
     return (
@@ -29,7 +30,12 @@ const Sidebar = (props) => {
                     <div style={{backgroundColor:m.color}}></div>
                     <span>{m.name}</span>
                 </div>)}
-            {props.newEventActive && <ContainerNewEventModal/>}
+            {
+                props.newEventActive && <ContainerNewEventModal/>
+            }
+            {
+                props.editEventActive && <ContainerEditEventModal/>
+            }
         </div>
     );
 };

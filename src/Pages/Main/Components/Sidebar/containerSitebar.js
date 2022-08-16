@@ -6,7 +6,8 @@ import Sidebar from "./Sidebar";
 let mapStateToProps = (state) => {
     return {
         date:state.mainPage.date,
-        newEventActive:state.mainPage.newEventActive
+        newEventActive:state.mainPage.newEventActive,
+        editEventActive:state.mainPage.editEventActive,
     }
 }
 let mapDispatchToProps = (dispatch) => {

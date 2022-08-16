@@ -15,7 +15,7 @@ import {toast} from "react-hot-toast";
 
 
 const NewEventModal = (props) => {
-    const [eventValue, setEventValue] = useState({
+   /* const [eventValue, setEventValue] = useState({
             title: '',
             date: '',
             startTime: '',
@@ -35,7 +35,6 @@ const NewEventModal = (props) => {
         }))
     }
 
-    console.log(eventValue)
 
     const saveData = () => {
         let url = "http://localhost:3005/event"
@@ -49,11 +48,77 @@ const NewEventModal = (props) => {
         fetch(url, option)
             .then(response =>{
                 if(response.ok===true){
-                    toast.success("Товар успешно добавлен")
+                    toast.success("Событие успешно добавлена")
                 }else {
                     toast.error("Что=то произошло Cтатус ошибки:" + response.status)
                 }
             })
+    }*/
+    const [date, setDate] = useState(null)
+    const [title, setTitle] = useState(null)
+    const [startTime, setStartTime] = useState(null)
+    const [endTime, setEndTime] = useState(null)
+    const [repeatEvent, setRepeatEvent] = useState(null)
+    const [room, setRoom] = useState(null)
+    const [marker, setMarker] = useState(null)
+    const [access, setAccess] = useState(null)
+
+
+    const handleSubmit = (e) => {
+        if (e.currentTarget.name === "title") {
+            setTitle(e.currentTarget.value)
+        }
+        if (e.currentTarget.name === "startTime") {
+            setStartTime(e.currentTarget.value)
+        }
+        if (e.currentTarget.name === "endTime") {
+            setEndTime(e.currentTarget.value)
+        }
+        if (e.currentTarget.name === "repeat") {
+            setRepeatEvent(e.currentTarget.value)
+        }
+        if (e.currentTarget.name === "room") {
+            setRoom(e.currentTarget.value)
+        }
+        if (e.currentTarget.name === "marker") {
+            setMarker(e.currentTarget.value)
+        }
+        if (e.currentTarget.name === "access") {
+            setAccess(e.currentTarget.value)
+        }
+    }
+
+    const saveData = () => {
+
+        const data = {
+            title,
+            date:moment(props.date).format("DD-MM-YYYY"),
+            startTime,
+            endTime,
+            repeatEvent,
+            room,
+            marker,
+            access,
+        }
+
+        console.log(data)
+        let url = "http://localhost:3005/event"
+        const option = {
+            method: "POST",
+            headers: {
+                "content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        }
+        fetch(url, option)
+            .then(response => {
+                if (response.ok === true) {
+                    toast.success("Событие успешно добавлена")
+                } else {
+                    toast.error("Что=то произошло Cтатус ошибки:" + response.status)
+                }
+            })
+        props.setEditActive(true)
     }
 
     return (
@@ -66,7 +131,7 @@ const NewEventModal = (props) => {
                         <img src={close} alt=""/>
                     </button>
                 </div>
-                <div  className={style.body}>
+                <form  className={style.body} action="javascript:void (0)">
                     <div>
                         <h4>Название</h4>
                         <input name="title" onChange={handleSubmit} className={style.titleInput} type="text"/>
@@ -130,14 +195,16 @@ const NewEventModal = (props) => {
                     <div className={style.room}>
                         <div>
                             <h4>Календарь</h4>
-                            <select name="marker" className={style.room} id="" onChange={handleSubmit}>
+                            <select name="marker" className={style.room} id=""
+                                    defaultValue={0} onChange={handleSubmit}>
                                 <option value="0">Рабочий</option>
                                 <option value="1">Личный</option>
                             </select>
                         </div>
                         <div>
                             <h4>Разрешение на доступ к мероприятию</h4>
-                            <select name="access" className={style.room} id="" onChange={handleSubmit}>
+                            <select name="access" className={style.room} id=""
+                                    defaultValue={0} onChange={handleSubmit}>
                                 <option value="0">Общедоступное</option>
                                 <option value="1">Личный</option>
                             </select>
@@ -146,7 +213,7 @@ const NewEventModal = (props) => {
                     <div className={style.footer}>
                         <button onClick={saveData}>Сохранить</button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     );

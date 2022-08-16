@@ -1,23 +1,43 @@
 import React from 'react';
 import {connect} from "react-redux";
 import Week from "./Week";
-import {dateDayAC, eventAC, timeAC} from "../../../../../Redux/Reducer/mainReducer";
+import {
+    dateDayAC,
+    dateEventAC,
+    editEventAC,
+    eventAC,
+    eventValueAC,
+    timeAC
+} from "../../../../../Redux/Reducer/mainReducer";
 
 let mapStateToProps = (state) => {
     return {
         date:state.mainPage.date,
-        newEventActive:state.mainPage.newEventActive
+        newEventActive:state.mainPage.newEventActive,
+        editEventActive:state.mainPage.editEventActive,
+        eventDate:state.mainPage.eventDate,
+        eventValue:state.mainPage.eventValue,
     }
 }
 let mapDispatchToProps = (dispatch) => {
     return {
-        setActive: (boolean) => {
+        setEventActive: (boolean) => {
             dispatch(eventAC(boolean))
+        },
+        setEditActive: (boolean) => {
+            dispatch(editEventAC(boolean))
         },
         onChangeDate: (date) => {
             dispatch(dateDayAC(date))
-        }, setTime: (time) => {
+        },
+        setTimeEvent: (time) => {
             dispatch(timeAC(time))
+        },
+        /*setEventData: (data) => {
+            dispatch(dateEventAC(data))
+        },*/
+        setEventValue: (data) => {
+            dispatch(eventValueAC(data))
         }
     }
 }

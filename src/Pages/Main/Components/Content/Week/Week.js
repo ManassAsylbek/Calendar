@@ -1,12 +1,43 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import style from "../Week/Week.module.css";
 import logoTime from "../../../../../Media/icons/logoTime.svg";
 import {times} from "../../../../../Constants/constants";
 import moment from "moment";
-import NewEventModal from "../../../../../Components/newEventModal/NewEventModal";
-import ContainerNewEventModal from "../../../../../Components/newEventModal/ContainerNewEventModal";
+import {toast} from "react-hot-toast";
+
+import Event from "../Event/Event";
+
+
+
+/*const Event = (props) => {
+
+
+    const eventDate = {
+        ...props.events.find(item => item.date === (moment(props.date).format('DD-MM-YYYY'))
+            && item.startTime === props.time)
+    }
+
+    const getEvent = () => {
+
+        eventDate.date ?  props.setEditActive(true) : props.setEventActive(true)
+    }
+
+    return (
+        <div onClick={getEvent}>
+            {`${eventDate.date ? eventDate.title : ""}`}
+
+        </div>
+
+
+    );
+};*/
+
 
 const Week = (props) => {
+
+    const [events, setEvents] = useState([])
+
+
     let wn = [];
     let wno = [];
     let wd = []
@@ -29,9 +60,21 @@ const Week = (props) => {
         const [date,setDate] = useState(new Date())*/
 
 
-    const getDate = () => {
-  /*      props.onChangeDate(moment(n.date))*/
+    const getEvents = () => {
+        const url = 'http://localhost:3005/event';
+        fetch(url)
+            .then(response => {
+                if (response.ok) {
+                    return response.json()
+                } else {
+                    toast.error("Что=то произошло.Cтатус ошибки:" + response.status)
+                }
+            })
+            .then(data => setEvents(data))
+
+
     }
+    useEffect(getEvents, [])
 
     return (
         <div className={style.week}>
@@ -46,21 +89,30 @@ const Week = (props) => {
                     {times.map((t) => <div key={t.id}>{t.time}</div>)}
                 </div>
                 <div className={style.hour_items}>
-                    {times.map((t) => <div
-                     onClick={()=>props.setTime(t.time)}
+                    {
+                        times.map((t) => <div
+                        onClick={() => props.setTimeEvent(t.time)}
                         className={style.day_items} key={t.id}>
-                        {wno.map(n => <div onClick={()=>props.onChangeDate(moment(n.date))}>
-                            <div onClick={() =>props.setActive(true) }
+                        {
+                            wno.map(n => <div onClick={() => props.onChangeDate(moment(n.date))} className={style.item}>
+                            <div
                                  className={style.item} key={n}>
-                                {t.time + " " + moment(n.date).format('DD-MM-YYYY dddd')}</div>
-                        </div>)}
-                    </div>)}
+
+                                <Event date={n.date} time={t.time} events={events}
+                                       setEditActive = {props.setEditActive}
+                                       setEventValue={props.setEventValue}
+                                       setEventActive={props.setEventActive}
+                                />
+
+                            </div>
+                        </div>
+                            )}
+                    </div>
+                        )}
 
                 </div>
             </div>
-            {
-                props.newEventActive && <ContainerNewEventModal/>
-            }
+
 
         </div>
     );

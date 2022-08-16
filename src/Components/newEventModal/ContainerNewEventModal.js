@@ -22,7 +22,10 @@ let mapDispatchToProps = (dispatch) => {
         },
         onSetDate: (date) =>{
             dispatch(dateDayAC(date))
-        }
+        },
+        setEventActive: (boolean) => {
+            dispatch(eventAC(boolean))
+        },
 
     }
 }
