@@ -44,7 +44,7 @@ const EditMarkerModal = (props) => {
         fetch(url,options)
             .then(response => {
                 if (response.ok) {
-                    toast.success("Товар успешно DELETE")
+                    toast.success("Маркер успешно DELETE")
                     updateStore();
                     setActive()
                 } else {
