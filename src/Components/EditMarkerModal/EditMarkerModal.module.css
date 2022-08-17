@@ -9,13 +9,13 @@
     align-items: center;
     justify-content: center;
     justify-items: center;
-    transform: scale(0);
+    /*   transform: scale(0);*/
 }
 
 
 .active {
-
-    transform: scale(1);
+    /*  background-color: rgba(0,0,0,0.4);*/
+    /* transform: scale(1);*/
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -28,9 +28,8 @@
     z-index: 10;
 }
 
-.newEventContent {
-    width: 632px;
-
+.Content {
+    width: 296px;
     padding: 16px;
     background: #FFFFFF;
     box-shadow: 0px 2px 25px rgba(136, 136, 136, 0.35);
@@ -44,7 +43,7 @@
     gap: 16px;
 }
 
-.newEventContent h4 {
+.Content h4 {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 300;
@@ -80,7 +79,7 @@
     border: none;
 }
 
-.titleInput,.place select {
+.titleInput {
     padding-left: 16px;
     width: 100%;
     height: 40px;
@@ -97,78 +96,50 @@
 
 }
 
-.time {
+.color {
     display: grid;
-    grid-template-columns: 232px 162px 1fr;
+    grid-template-columns: repeat(8, 1fr);
     gap: 8px;
+}
+
+.selectColor {
+    width: 24px;
+    height: 24px;
+    border-radius: 24px;
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
 
-.select {
-    display: flex;
-}
-
-.select img {
-    margin: 0 3px;
-}
-
-.time select, .modalDatePicker {
-    height: 40px;
-    border: 1px solid rgba(46, 46, 46, 0.2);
-    border-radius: 8px;
-    padding: 0 8px;
-}
-
-.add{
-    display: flex;
-    align-items: end;
-    justify-content: space-between;
-    margin-bottom: 4px;
-}
-.add button{
-    border:none;
-    background: transparent;
-}
-.add h4{
-    margin-bottom: 0;
-}
-
-.person {
+.footer {
     width: 100%;
-    height: 88px;
-    border: 1px solid rgba(46, 46, 46, 0.2);
-    border-radius: 8px;
-
-}
-
-.room{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
     gap: 8px;
 }
-.room select{
+
+.footer button {
     width: 100%;
     height: 40px;
-    border: 1px solid rgba(46, 46, 46, 0.2);
-    border-radius: 8px;
-    padding: 0 8px;
-}
-
-.footer{
-    display: flex;
-    justify-content: end;
-}
-.footer button{
-    width: 184px;
-    height: 40px;
-    background: #4B84F4;
-    border-radius: 10px;
-    outline: none;
-    border:none;
     ont-family: 'Inter';
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
     line-height: 19px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.save{
+    background: #4B84F4;
     color: #FFFFFF;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+}
+.delete{
+    background:transparent;
+    color:#4B84F4;
+    border:1px solid #4B84F4;
+    border-radius: 10px;
 }

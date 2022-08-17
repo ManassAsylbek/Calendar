@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import NewEventModal from "./NewEventModal";
-import {dateDayAC, eventAC} from "../../Redux/Reducer/mainReducer";
+import {dateDayAC, eventAC, updateStoreAC} from "../../Redux/Reducer/mainReducer";
 
 
 
@@ -25,6 +25,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         setEventActive: (boolean) => {
             dispatch(eventAC(boolean))
+        },
+        setUpdateStore: (data) => {
+            dispatch(updateStoreAC(data))
         },
 
     }

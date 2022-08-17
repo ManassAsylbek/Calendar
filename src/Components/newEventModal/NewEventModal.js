@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {DatePicker} from 'antd';
 import 'moment/locale/ru';
 import locale from 'antd/es/date-picker/locale/ru_RU';
@@ -11,7 +11,7 @@ import add from '../../Media/icons/add.svg'
 import tire from '../../Media/icons/tire.svg'
 import "./NewEwentModal.css"
 import moment from "moment";
-import {toast} from "react-hot-toast";
+import {toast, Toaster} from "react-hot-toast";
 
 
 const NewEventModal = (props) => {
@@ -54,7 +54,10 @@ const NewEventModal = (props) => {
                 }
             })
     }*/
-    const [date, setDate] = useState(null)
+    const [markerApi, setMarkerApi] = useState([])
+    const [times, setTimes] = useState([])
+    const [repeat, setrRepeat] = useState([])
+
     const [title, setTitle] = useState(null)
     const [startTime, setStartTime] = useState(null)
     const [endTime, setEndTime] = useState(null)
@@ -87,7 +90,13 @@ const NewEventModal = (props) => {
             setAccess(e.currentTarget.value)
         }
     }
+    const setActive = () =>{
+        props.setActive(false)
+    }
 
+    const updateStore = (data) => {
+        props.setUpdateStore(data)
+    }
     const saveData = () => {
 
         const data = {
@@ -100,7 +109,7 @@ const NewEventModal = (props) => {
             marker,
             access,
         }
-
+        updateStore(data)
         console.log(data)
         let url = "http://localhost:3005/event"
         const option = {
@@ -114,20 +123,64 @@ const NewEventModal = (props) => {
             .then(response => {
                 if (response.ok === true) {
                     toast.success("Событие успешно добавлена")
+                    setActive()
+
                 } else {
                     toast.error("Что=то произошло Cтатус ошибки:" + response.status)
                 }
             })
-        props.setEditActive(true)
+    }
+    const getRepeat = () => {
+        const url = `http://localhost:3005/repeat`;
+        fetch(url)
+            .then(response => {
+                if (response.ok) {
+                    return response.json()
+                } else {
+                    toast.error("Что=то произошло Cтатус ошибки:" + response.status)
+                }
+            })
+            .then(data => setrRepeat(data))
+    }
+    const getTimes = () => {
+        const url = `http://localhost:3005/times`;
+        fetch(url)
+            .then(response => {
+                if (response.ok) {
+                    return response.json()
+                } else {
+                    toast.error("Что=то произошло Cтатус ошибки:" + response.status)
+                }
+            })
+            .then(data => setTimes(data))
+        getRepeat()
     }
 
+    const getMarker = () => {
+        const url = `http://localhost:3005/marker`;
+        fetch(url)
+            .then(response => {
+                if (response.ok) {
+                    return response.json()
+                } else {
+                    toast.error("Что=то произошло Cтатус ошибки:" + response.status)
+                }
+            })
+            .then(data => setMarkerApi(data))
+        getTimes()
+    }
+
+
+
+
+    useEffect(getMarker, [])
     return (
         <div className={props.newEventActive ? `${style.active}` : `${style.modal}`}
-             onClick={() => props.setActive(false)}>
+             onClick={setActive}>
             <div className={style.newEventContent} onClick={e => e.stopPropagation()}>
                 <div className={style.header}>
                     <h2>Новое событие</h2>
-                    <button onClick={() => props.setActive(false)} className={style.eventBtn}>
+                    <button onClick={setActive} className={style.eventBtn}>
                         <img src={close} alt=""/>
                     </button>
                 </div>
@@ -197,8 +250,9 @@ const NewEventModal = (props) => {
                             <h4>Календарь</h4>
                             <select name="marker" className={style.room} id=""
                                     defaultValue={0} onChange={handleSubmit}>
-                                <option value="0">Рабочий</option>
-                                <option value="1">Личный</option>
+                                {markerApi.map(item=><option value={item.color}>{item.name}</option>)}
+                                {/*<option value="0">Рабочий</option>
+                                <option value="1">Личный</option>*/}
                             </select>
                         </div>
                         <div>
@@ -214,6 +268,10 @@ const NewEventModal = (props) => {
                         <button onClick={saveData}>Сохранить</button>
                     </div>
                 </form>
+                <Toaster
+                    position="top-center"
+                    reverseOrder={false}
+                />
             </div>
         </div>
     );

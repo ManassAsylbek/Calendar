@@ -74,7 +74,7 @@ const Week = (props) => {
 
 
     }
-    useEffect(getEvents, [])
+    useEffect(getEvents, [props.updateStore])
 
     return (
         <div className={style.week}>

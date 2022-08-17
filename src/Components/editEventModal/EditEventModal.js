@@ -2,63 +2,88 @@ import React, {useEffect, useState} from 'react';
 import {DatePicker} from 'antd';
 import 'moment/locale/ru';
 import locale from 'antd/es/date-picker/locale/ru_RU';
-import {times} from '../../Constants/constants'
-import {repeat} from '../../Constants/constants'
-
 import style from "./EditEventModal.module.css"
 import close from '../../Media/icons/close.svg'
 import add from '../../Media/icons/add.svg'
 import tire from '../../Media/icons/tire.svg'
 import "./EditEwentModal.css"
-import moment from "moment";
-import {toast} from "react-hot-toast";
+
+import {toast, Toaster} from "react-hot-toast";
 
 
 const EditEventModal = (props) => {
     const [repeat, setRepeat] = useState([])
-    const [times, setTimes]= useState([])
-     /*const [eventValue, setEventValue] = useState({
-             title: '',
-             date: '',
-             startTime: '',
-             endTime: '',
-             repeat: '',
-             room: '',
-             marker: '',
-             access: '',
-         }
-     )
-     const handleSubmit = (e) => {
-         const {name, value} = e.currentTarget;
-         setEventValue(prev=>({
-            ...prev ,
-         [name]:value,
-             date:moment(props.date).format("DD-MM-YYYY")
-         }))
-     }
+    const [times, setTimes] = useState([])
+    /*const [eventValue, setEventValue] = useState({
+            title: '',
+            date: '',
+            startTime: '',
+            endTime: '',
+            repeat: '',
+            room: '',
+            marker: '',
+            access: '',
+        }
+    )
+    const handleSubmit = (e) => {
+        const {name, value} = e.currentTarget;
+        setEventValue(prev=>({
+           ...prev ,
+        [name]:value,
+            date:moment(props.date).format("DD-MM-YYYY")
+        }))
+    }
 
-     console.log(eventValue)
-     const saveData = () => {
-         let url = "http://localhost:3005/event"
-         const option = {
-             method: "POST",
-             headers: {
-                 "content-Type": "application/json"
-             },
-             body: JSON.stringify(eventValue)
-         }
-         fetch(url, option)
-             .then(response =>{
-                 if(response.ok===true){
-                     toast.success("Товар успешно добавлен")
-                 }else {
-                     toast.error("Что=то произошло Cтатус ошибки:" + response.status)
-                 }
-             })
-     }*/
+    console.log(eventValue)
+    const saveData = () => {
+        let url = "http://localhost:3005/event"
+        const option = {
+            method: "POST",
+            headers: {
+                "content-Type": "application/json"
+            },
+            body: JSON.stringify(eventValue)
+        }
+        fetch(url, option)
+            .then(response =>{
+                if(response.ok===true){
+                    toast.success("Товар успешно добавлен")
+                }else {
+                    toast.error("Что=то произошло Cтатус ошибки:" + response.status)
+                }
+            })
+    }*/
 
-    const updateProduct = (e) => {
-        console.log(props.eventValue.id)
+    const updateStore = (data) => {
+        props.setUpdateStore(data)
+    }
+    const getEdit = () => {
+        props.setEventActive(false)
+    }
+    const getEvent = () => {
+        props.setActive(false)
+        getEdit()
+    }
+
+
+    const deleteEvent = () => {
+        const url = 'http://localhost:3005/marker/'+props.markerDate.id;
+        const options={
+            method:'DELETE'
+        }
+        fetch(url,options)
+            .then(response => {
+                if (response.ok) {
+                    toast.success("Товар успешно DELETE")
+                    updateStore();
+                    getEdit()
+                } else {
+                    toast.error("Что=то произошло.Cтатус ошибки:" + response.status)
+                }
+            })
+    }
+
+    const updateEvent = (e) => {
         const data = {
             title: e.currentTarget.title.value,
             date: e.currentTarget.date.value,
@@ -69,6 +94,8 @@ const EditEventModal = (props) => {
             marker: e.currentTarget.marker.value,
             access: e.currentTarget.access.value,
         }
+
+        updateStore(data)
 
         const option = {
             method: "PUT",
@@ -82,6 +109,7 @@ const EditEventModal = (props) => {
             .then(response => {
                 if (response.ok === true) {
                     toast.success("Событие успешно редактирована")
+                    getEvent()
                 } else {
                     toast.error("Что=то произошло Cтатус ошибки:" + response.status)
                 }
@@ -89,7 +117,7 @@ const EditEventModal = (props) => {
     }
 
     const getTimes = () => {
-        const url = `http://localhost:3005/times` ;
+        const url = `http://localhost:3005/times`;
         fetch(url)
             .then(response => {
                 if (response.ok) {
@@ -101,7 +129,7 @@ const EditEventModal = (props) => {
             .then(data => setTimes(data))
     }
     const getRepeat = () => {
-        const url = `http://localhost:3005/repeat` ;
+        const url = `http://localhost:3005/repeat`;
         fetch(url)
             .then(response => {
                 if (response.ok) {
@@ -120,15 +148,15 @@ const EditEventModal = (props) => {
 
     return (
         <div className={props.editEventActive ? `${style.active}` : `${style.modal}`}
-             onClick={() => props.setActive(false)}>
+             onClick={getEvent}>
             <div className={style.newEventContent} onClick={e => e.stopPropagation()}>
                 <div className={style.header}>
                     <h2>Редактирования события </h2>
-                    <button onClick={() => props.setActive(false)} className={style.eventBtn}>
+                    <button onClick={getEvent} className={style.eventBtn}>
                         <img src={close} alt=""/>
                     </button>
                 </div>
-                <form onSubmit={updateProduct} className={style.body} action="javascript:void (0)">
+                <form onSubmit={updateEvent} className={style.body} action="javascript:void (0)">
                     <div>
                         <h4>Название</h4>
                         <input name="title" defaultValue={props.eventValue.title}
@@ -217,9 +245,14 @@ const EditEventModal = (props) => {
                         </div>
                     </div>
                     <div className={style.footer}>
-                        <button>Сохранить</button>
+                        <button type='submit' >Сохранить</button>
+                        <button>удалить</button>
                     </div>
                 </form>
+                <Toaster
+                    position="top-center"
+                    reverseOrder={false}
+                />
             </div>
         </div>
     );

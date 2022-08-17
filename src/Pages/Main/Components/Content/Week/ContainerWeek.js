@@ -17,6 +17,8 @@ let mapStateToProps = (state) => {
         editEventActive:state.mainPage.editEventActive,
         eventDate:state.mainPage.eventDate,
         eventValue:state.mainPage.eventValue,
+        updateStore:state.mainPage.updateStore,
+
     }
 }
 let mapDispatchToProps = (dispatch) => {

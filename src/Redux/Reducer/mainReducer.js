@@ -11,6 +11,10 @@ const EDIT_EVENT = "EDIT_EVENT";
 const TIME = "TIME";
 const DATE_EVENT = "DATE_EVENT";
 const EVENT_VALUE = "EVENT_VALUE";
+const MARKER = "MARKER";
+const EDIT_MARKER = "EDIT_MARKER";
+const MARKER_DATE = "MARKER_DATE";
+const EDIT_MARKER_DATE = "EDIT_MARKER_DATE";
 
 let initialState = {
     date: moment(new Date()),
@@ -21,7 +25,11 @@ let initialState = {
     startTime: "9:00",
     endTime: "18:00",
     eventDate: {},
-    eventValue:{}
+    eventValue: {},
+    marker: false,
+    editMarker: false,
+    markerDate: {},
+    updateStore: {}
 
 
 }
@@ -32,14 +40,24 @@ const mainReducer = (state = initialState, action) => { //используем �
 
         case DATE_DAY:
             return {...state, date: action.date} /*каждый раз будет добовлять новыю дату*/
+
         case DATE_EVENT:
             return {...state, eventDate: {...action.date}}
         case EVENT_VALUE:
-            return {...state,  eventValue:{...action.data}}
+            return {...state, eventValue: {...action.data}}
         case NEW_EVENT:
             return {...state, newEventActive: action.boolean}
         case EDIT_EVENT:
             return {...state, editEventActive: action.boolean}
+
+        case MARKER:
+            return {...state, marker: action.boolean}
+        case EDIT_MARKER:
+            return {...state, editMarker: action.boolean}
+        case MARKER_DATE:
+            return {...state, markerDate: {...action.data}}
+        case EDIT_MARKER_DATE:
+            return {...state, updateStore: {...action.data}}
 
         case TIME:
             return {
@@ -71,6 +89,10 @@ export const editEventAC = (boolean) => ({type: EDIT_EVENT, boolean})
 export const timeAC = (time) => ({type: TIME, time})
 export const dateEventAC = (data) => ({type: DATE_EVENT, data})
 export const eventValueAC = (data) => ({type: EVENT_VALUE, data})
+export const markerAC = (boolean) => ({type: MARKER, boolean})
+export const editMarkerAC = (boolean) => ({type: EDIT_MARKER, boolean})
+export const markerDateAC = (data) => ({type: MARKER_DATE, data})
+export const updateStoreAC = (data) => ({type: EDIT_MARKER_DATE, data})
 /*export const todayDateAC = (date) => ({type: SELECT_VALUE, date})*/
 
 export default mainReducer;

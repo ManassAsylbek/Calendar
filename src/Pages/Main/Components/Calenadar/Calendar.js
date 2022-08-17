@@ -34,10 +34,11 @@ const App = (props) => {
         }
 
 
-
         const listData = getListData(event);
         return (
-            <ul className="events">
+            <ul className="events"  onSelect={() => props.editEventActive
+                ? props.setEventActive(false)
+                : props.setEventActive(true)}>
                 {listData.map((item) => (
                     <li key={item.content} onClick={() => getEvent(event)}>
                         <span onClick={() => getEventValue(item)}>{item.title} </span>
@@ -61,7 +62,9 @@ const App = (props) => {
                 mode="month"
                 fullscreen={true}
                 dateCellRender={dateCellRender}
-
+                onSelect={() => props.editEventActive
+                    ? props.setEventActive(false)
+                    : props.setEventActive(true)}
             />
         </div>
     )

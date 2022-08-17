@@ -4,7 +4,6 @@ import {connect} from "react-redux";
 import {dateDayAC, editEventAC, eventAC, eventValueAC} from "../../../../Redux/Reducer/mainReducer";
 import Calendar from "../Calenadar/Calendar";
 import {toast} from "react-hot-toast";
-import Day from "../Content/day/Day";
 
 
 const CalendarRequest = (props) => {
@@ -25,7 +24,7 @@ const CalendarRequest = (props) => {
 
     }
 
-    useEffect(getEvents, [])
+    useEffect(getEvents, [props.updateStore])
 
 
     return (
@@ -47,6 +46,7 @@ let mapStateToProps = (state) => {
         date:state.mainPage.date,
         newEventActive:state.mainPage.newEventActive,
         editEventActive:state.mainPage.editEventActive,
+        updateStore:state.mainPage.updateStore,
     }
 }
 let mapDispatchToProps = (dispatch) => {

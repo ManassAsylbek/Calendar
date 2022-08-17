@@ -34,7 +34,7 @@ const DayRequest = (props) => {
 
     }
 
-    useEffect(getEvents, [])
+    useEffect(getEvents, [props.updateStore])
 
 
     return (
@@ -59,6 +59,7 @@ let mapStateToProps = (state) => {
         newEventActive: state.mainPage.newEventActive,
         editEventActive: state.mainPage.editEventActive,
         eventValue: state.mainPage.eventValue,
+        updateStore:state.mainPage.updateStore,
     }
 }
 let mapDispatchToProps = (dispatch) => {
