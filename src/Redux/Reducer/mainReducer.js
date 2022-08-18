@@ -14,6 +14,7 @@ const EVENT_VALUE = "EVENT_VALUE";
 const MARKER = "MARKER";
 const EDIT_MARKER = "EDIT_MARKER";
 const MARKER_DATE = "MARKER_DATE";
+const REPEAT_DATE = "REPEAT_DATE";
 const EDIT_MARKER_DATE = "EDIT_MARKER_DATE";
 const INFO = "INFO";
 const LOCATION_INFO = "LOCATION_INFO";
@@ -31,6 +32,7 @@ let initialState = {
     marker: false,
     editMarker: false,
     markerDate: {},
+    repeatDate: {},
     updateStore: {},
     info: false,
     locationInfo: {},
@@ -72,6 +74,9 @@ const mainReducer = (state = initialState, action) => { //используем �
         case MARKER_DATE:
             return {...state, markerDate: {...action.data}}
 
+        case REPEAT_DATE:
+            return {...state, repeatDate: {...action.data}}
+
         case EDIT_MARKER_DATE:
             return {...state, updateStore: {...action.data}}
 
@@ -109,6 +114,7 @@ export const eventValueAC = (data) => ({type: EVENT_VALUE, data})
 export const markerAC = (boolean) => ({type: MARKER, boolean})
 export const editMarkerAC = (boolean) => ({type: EDIT_MARKER, boolean})
 export const markerDateAC = (data) => ({type: MARKER_DATE, data})
+export const repeatDateAC = (data) => ({type: REPEAT_DATE, data})
 export const updateStoreAC = (data) => ({type: EDIT_MARKER_DATE, data})
 export const infoAC = (boolean) => ({type: INFO, boolean})
 export const locationInfoAC = (data) => ({type: LOCATION_INFO, data})

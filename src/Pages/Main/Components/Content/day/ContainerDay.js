@@ -5,7 +5,7 @@ import {
     dateDayAC,
     dateEventAC,
     editEventAC,
-    eventAC, eventValueAC,
+    eventAC, eventValueAC, infoAC, locationInfoAC,
     timeAC
 } from "../../../../../Redux/Reducer/mainReducer";
 import moment from "moment";
@@ -48,6 +48,9 @@ const DayRequest = (props) => {
             setEventActive={props.setEventActive}
             setEventValue={props.setEventValue}
             editEventActive={props.editEventActive}
+            setInfoActive={props.setInfoActive}
+            setLocationInfo={props.setLocationInfo}
+
         />
     )
 }
@@ -84,7 +87,13 @@ let mapDispatchToProps = (dispatch) => {
         },
         setEventData: (data) => {
             dispatch(dateEventAC(data))
-        }
+        },
+        setInfoActive: (boolean) => {
+            dispatch(infoAC(boolean))
+        },
+        setLocationInfo: (data) => {
+            dispatch(locationInfoAC(data))
+        },
     }
 }
 const ContainerDay = connect(mapStateToProps, mapDispatchToProps)(DayRequest)

@@ -17,7 +17,7 @@ const Sidebar = (props) => {
     const [markerDate, setMrkerDate] = useState(props.markerDate)
 
 
-    const getEditMarkerActive = () =>{
+    const getEditMarkerActive = () => {
         props.setEditMarkerActive(true)
 
     }
@@ -26,7 +26,7 @@ const Sidebar = (props) => {
         getEditMarkerActive()
     }
 
-    console.log(props.eventValue)
+
     return (
         <div className={style.sidebar}>
             <div className={style.logo}>
@@ -48,8 +48,8 @@ const Sidebar = (props) => {
                     <img src={addMarker} alt=""/></button>
             </div>
             <ul>
-            {props.markersDate.map(m => <div key={m.id} className={style.mark}
-                                            onClick={()=> getEditMarkerDate(m)}>
+                {props.markersDate.map(m => <div key={m.id} className={style.mark}
+                                                 onClick={() => getEditMarkerDate(m)}>
                     <div style={{backgroundColor: m.color}}></div>
                     <span>{m.name}</span>
                 </div>)}
@@ -61,7 +61,10 @@ const Sidebar = (props) => {
             {props.marker && <ContainerMarkerModal/>}
 
             {props.editMarker && <ContainerEditMarkerModal/>}
-            {props.info && <InfoModal eventValue={props.eventValue} locationInfo={props.locationInfo}/>}
+            {props.info && <InfoModal eventValue={props.eventValue}
+                                      locationInfo={props.locationInfo}
+                                      repeats={props.repeats}
+                                      markersDate={props.markersDate}/>}
             <Toaster
                 position="top-center"
                 reverseOrder={false}

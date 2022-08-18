@@ -21,7 +21,7 @@ const EditEventModal = (props) => {
             date: '',
             startTime: '',
             endTime: '',
-            repeat: '',
+        repeatEvent: '',
             room: '',
             marker: '',
             access: '',
@@ -258,7 +258,9 @@ const EditEventModal = (props) => {
                             <select name="marker" className={style.room} id=""
                                     onChange={handleSubmit}
                                     defaultValue={props.eventValue.marker}>
-                                {markerApi.map(item=><option value={item.color}>{item.name}</option>)}
+                                {markerApi.map(item=>props.eventValue.marker===item.color
+                                    ? <option selected={true} value={item.color}>{item.name}</option>
+                                    : <option value={item.color}>{item.name}</option>)}
 
                             </select>
                         </div>

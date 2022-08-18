@@ -9,19 +9,8 @@ import moment from "moment";
 
 
 const App = (props) => {
-    const [offsetY, setOffsetY] = useState(200)
-    const [offsetX, setOffsetX] = useState(200)
-    let handleWheel=(event)=> {
-        let currentTargetRect = event.currentTarget.getBoundingClientRect();
-        const event_offsetX = event.pageX-280,
-            event_offsetY = event.pageY-80;
-        setOffsetX(event_offsetX)
-        setOffsetY(event_offsetY)
 
 
-        /*console.log(event_offsetX)
-        console.log(event_offsetY)*/
-    }
 
     const getListData = (value) => {
         let listData = [];
@@ -55,17 +44,16 @@ const App = (props) => {
             props.setEventValue(item)
         }
 
-        let handleWheel=(event,item)=> {
-            let location = {x:0,y:0}
-            location.x = event.pageX
-            location.y  = event.pageY-80
+        let handleWheel = (event, item) => {
+            let location = {x: 0, y: 0}
+            location.x = event.pageX+10
+            location.y = event.pageY - 80
 
             getLocationInfo(location)
 
             getInfoActive()
             getEventValue(item)
-            /*console.log(event_offsetX)
-            console.log(event_offsetY)*/
+
         }
 
 
@@ -75,7 +63,7 @@ const App = (props) => {
                 ? props.setEventActive(false)
                 : props.setEventActive(true)}>
                 {listData.map((item) => (
-                    <li key={item.title} onClick={() => getEvent(item)} style={{position:"relative"}}>
+                    <li key={item.title} onClick={() => getEvent(item)} style={{position: "relative"}}>
                        <span style={{
                            background: item.marker,
                            width: 10,
@@ -85,12 +73,14 @@ const App = (props) => {
                            marginRight: 5,
                        }}
                              className="markerCalendar" onClick={() => getEventValue(item)}
-                             onMouseEnter={(e)=>handleWheel(e,item)}>ff..</span>
-                        <span style={{marginRight: 5}} onClick={() => getEventValue(item)}>{item.startTime}
-                            onMouseEnter={(e)=>handleWheel(e,item)}</span>
+                             onMouseEnter={(e) => handleWheel(e, item)}
+                             onMouseOut={()=> props.setInfoActive(false)}>ff..</span>
+                        <span style={{marginRight: 5}} onClick={() => getEventValue(item)}
+                              onMouseEnter={(e) => handleWheel(e, item)}
+                              onMouseOut={()=> props.setInfoActive(false)}>{item.startTime}</span>
                         <span onClick={() => getEventValue(item)}
-                              onMouseEnter={(e)=>handleWheel(e,item)}
-                        onMouseOut={()=>props.setInfoActive(false)}>{item.title}</span>
+                              onMouseEnter={(e) => handleWheel(e, item)}
+                        onMouseOut={()=> props.setInfoActive(false)}>{item.title}</span>
 
                     </li>
                 ))}

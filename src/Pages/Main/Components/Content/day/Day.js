@@ -28,6 +28,8 @@ const Day = (props) => {
                                            setEditActive={props.setEditActive}
                                            setEventActive={props.setEventActive}
                                            setEventValue={props.setEventValue}
+                                           setInfoActive={props.setInfoActive}
+                                           setLocationInfo={props.setLocationInfo}
 
                                     />
 

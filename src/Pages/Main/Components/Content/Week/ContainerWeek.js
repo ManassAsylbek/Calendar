@@ -6,7 +6,7 @@ import {
     dateEventAC,
     editEventAC,
     eventAC,
-    eventValueAC,
+    eventValueAC, infoAC, locationInfoAC,
     timeAC
 } from "../../../../../Redux/Reducer/mainReducer";
 
@@ -40,7 +40,13 @@ let mapDispatchToProps = (dispatch) => {
         },*/
         setEventValue: (data) => {
             dispatch(eventValueAC(data))
-        }
+        },
+        setInfoActive: (boolean) => {
+            dispatch(infoAC(boolean))
+        },
+        setLocationInfo: (data) => {
+            dispatch(locationInfoAC(data))
+        },
     }
 }
 const ContainerWeek = connect(mapStateToProps,mapDispatchToProps)(Week)

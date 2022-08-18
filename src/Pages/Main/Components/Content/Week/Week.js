@@ -101,6 +101,8 @@ const Week = (props) => {
                                                        setEditActive={props.setEditActive}
                                                        setEventValue={props.setEventValue}
                                                        setEventActive={props.setEventActive}
+                                                       setInfoActive={props.setInfoActive}
+                                                       setLocationInfo={props.setLocationInfo}
                                                 />
                                             </div>
                                         </div>
