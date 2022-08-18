@@ -59,7 +59,6 @@
 .times {
     display: grid;
     grid-template-columns: 72px 1fr;
-
     overflow-y: auto;
     height: calc(100vh - 112px);
 }
@@ -95,6 +94,9 @@
     text-align: center;
     color: #2E2E2E;
 }
+.hour_items{
+    width: 100%;
+}
 /*
 .hour_items div {
     border-left: 1px solid rgba(35, 35, 35, .1);
@@ -105,6 +107,7 @@
 }*/
 .day_items{
     display: flex;
+
 }
 .item{
     width: 100%;

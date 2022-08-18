@@ -18,7 +18,7 @@ const EDIT_MARKER_DATE = "EDIT_MARKER_DATE";
 
 let initialState = {
     date: moment(new Date()),
-    selectDate: <ContainerDay/>,
+    selectDate: <ContainerWeek/>,
     selectCalendar: "day",
     newEventActive: false,
     editEventActive: false,

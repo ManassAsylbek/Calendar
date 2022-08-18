@@ -226,9 +226,9 @@ const EditEventModal = (props) => {
                             <select name="repeatEvent" className={style.repeat} id=""
                                     onChange={handleSubmit}>
                                 defaultValue={props.eventValue.repeat}
-                                {repeat.map(item => props.eventValue.repeatEvent === item.id
-                                    ? <option selected={true} value={item.item}>{item.item}</option>
-                                    : <option value={item.item}>{item.item}</option>
+                                {repeat.map(item => +props.eventValue.repeatEvent === item.id
+                                    ? <option selected={true} value={item.id}>{item.item}</option>
+                                    : <option value={item.id}>{item.item}</option>
                                 )}
                             </select>
 

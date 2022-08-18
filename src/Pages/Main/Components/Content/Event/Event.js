@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from "moment";
+import style from './Event.module.css'
 
 const Event = (props) => {
     let eventDate = []
@@ -21,9 +22,15 @@ const Event = (props) => {
 
 
     return (
-        <div onClick={getEvent}>
+        <div onClick={getEvent} className={style.Event}>
             {
-                eventDate.map(item => <span onClick={() => getEventValue(item)}>{item.title}</span>)
+                eventDate.map((item,i) => <div className={style.item}>
+                        <div style={{background: item.marker}} className={style.marker}></div>
+                        <div className={style.EventItem} onClick={() => getEventValue(item)}>{item.title}<div>
+                            {item.startTime}
+                        </div></div>
+                    </div>
+                )
             }
         </div>
 

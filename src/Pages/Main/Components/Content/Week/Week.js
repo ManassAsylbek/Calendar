@@ -8,7 +8,6 @@ import {toast} from "react-hot-toast";
 import Event from "../Event/Event";
 
 
-
 /*const Event = (props) => {
 
 
@@ -86,28 +85,27 @@ const Week = (props) => {
             </div>
             <div className={style.times}>
                 <div className={style.hours}>
-                    {times.map((t) => <div key={t.id}>{t.time}</div>)}
+                    {times.map((t) => <div   key={t.id}>{t.time}</div>)}
                 </div>
                 <div className={style.hour_items}>
                     {
                         times.map((t) => <div
-                        onClick={() => props.setTimeEvent(t.time)}
-                        className={style.day_items} key={t.id}>
-                        {
-                            wno.map(n => <div onClick={() => props.onChangeDate(moment(n.date))} className={style.item}>
-                            <div
-                                 className={style.item} key={n}>
+                                onClick={() => props.setTimeEvent(t.time)}
+                                className={style.day_items} key={t.id}>
 
-                                <Event date={n.date} time={t.time} events={events}
-                                       setEditActive = {props.setEditActive}
-                                       setEventValue={props.setEventValue}
-                                       setEventActive={props.setEventActive}
-                                />
-
+                                {
+                                    wno.map(n => <div key={n} onClick={() => props.onChangeDate(moment(n.date))}
+                                                      className={style.item}>
+                                            <div>
+                                                <Event date={n.date} time={t.time} events={events}
+                                                       setEditActive={props.setEditActive}
+                                                       setEventValue={props.setEventValue}
+                                                       setEventActive={props.setEventActive}
+                                                />
+                                            </div>
+                                        </div>
+                                    )}
                             </div>
-                        </div>
-                            )}
-                    </div>
                         )}
 
                 </div>
