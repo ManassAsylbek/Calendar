@@ -15,10 +15,12 @@ const MARKER = "MARKER";
 const EDIT_MARKER = "EDIT_MARKER";
 const MARKER_DATE = "MARKER_DATE";
 const EDIT_MARKER_DATE = "EDIT_MARKER_DATE";
+const INFO = "INFO";
+const LOCATION_INFO = "LOCATION_INFO";
 
 let initialState = {
     date: moment(new Date()),
-    selectDate: <ContainerWeek/>,
+    selectDate: <ContainerDay/>,
     selectCalendar: "day",
     newEventActive: false,
     editEventActive: false,
@@ -29,7 +31,9 @@ let initialState = {
     marker: false,
     editMarker: false,
     markerDate: {},
-    updateStore: {}
+    updateStore: {},
+    info: false,
+    locationInfo: {},
 
 
 }
@@ -43,21 +47,34 @@ const mainReducer = (state = initialState, action) => { //используем �
 
         case DATE_EVENT:
             return {...state, eventDate: {...action.date}}
+
         case EVENT_VALUE:
             return {...state, eventValue: {...action.data}}
+
         case NEW_EVENT:
             return {...state, newEventActive: action.boolean}
+
         case EDIT_EVENT:
             return {...state, editEventActive: action.boolean}
 
         case MARKER:
             return {...state, marker: action.boolean}
+
         case EDIT_MARKER:
             return {...state, editMarker: action.boolean}
+
+        case INFO:
+            return {...state, info: action.boolean}
+
+        case LOCATION_INFO:
+            return {...state, locationInfo: {...action.data}}
+
         case MARKER_DATE:
             return {...state, markerDate: {...action.data}}
+
         case EDIT_MARKER_DATE:
             return {...state, updateStore: {...action.data}}
+
 
         case TIME:
             return {
@@ -93,7 +110,8 @@ export const markerAC = (boolean) => ({type: MARKER, boolean})
 export const editMarkerAC = (boolean) => ({type: EDIT_MARKER, boolean})
 export const markerDateAC = (data) => ({type: MARKER_DATE, data})
 export const updateStoreAC = (data) => ({type: EDIT_MARKER_DATE, data})
-/*export const todayDateAC = (date) => ({type: SELECT_VALUE, date})*/
+export const infoAC = (boolean) => ({type: INFO, boolean})
+export const locationInfoAC = (data) => ({type: LOCATION_INFO, data})
 
 export default mainReducer;
 

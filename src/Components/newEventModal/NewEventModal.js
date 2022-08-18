@@ -169,10 +169,6 @@ const NewEventModal = (props) => {
             .then(data => setMarkerApi(data))
         getTimes()
     }
-
-
-
-
     useEffect(getMarker, [])
     return (
         <div className={props.newEventActive ? `${style.active}` : `${style.modal}`}

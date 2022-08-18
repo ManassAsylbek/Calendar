@@ -1,7 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import 'moment/locale/ru';
 import {connect} from "react-redux";
-import {dateDayAC, editEventAC, eventAC, eventValueAC} from "../../../../Redux/Reducer/mainReducer";
+import {
+    dateDayAC,
+    editEventAC,
+    eventAC,
+    eventValueAC,
+    infoAC,
+    locationInfoAC
+} from "../../../../Redux/Reducer/mainReducer";
 import Calendar from "../Calenadar/Calendar";
 import {toast} from "react-hot-toast";
 
@@ -37,6 +44,8 @@ const CalendarRequest = (props) => {
                   setEditActive={props.setEditActive}
                   setEventActive={props.setEventActive}
                   setEventValue={props.setEventValue}
+                  setInfoActive={props.setInfoActive}
+                  setLocationInfo={props.setLocationInfo}
         />
     )
 }
@@ -61,6 +70,12 @@ let mapDispatchToProps = (dispatch) => {
         },
         setEditActive: (boolean) => {
             dispatch(editEventAC(boolean))
+        },
+        setInfoActive: (boolean) => {
+            dispatch(infoAC(boolean))
+        },
+        setLocationInfo: (data) => {
+            dispatch(locationInfoAC(data))
         },
     }
 }

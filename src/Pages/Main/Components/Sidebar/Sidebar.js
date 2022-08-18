@@ -10,6 +10,8 @@ import ContainerEditEventModal from "../../../../Components/editEventModal/Conta
 import ContainerMarkerModal from "../../../../Components/MarkerModal/ContainerMarkerModal";
 import {toast, Toaster} from "react-hot-toast";
 import ContainerEditMarkerModal from "../../../../Components/EditMarkerModal/ContainerEditMarkerModal";
+import ContainerInfoModal from "../../../../Components/InfoModal/ContainerInfoModal";
+import InfoModal from "../../../../Components/InfoModal/InfoModal";
 
 const Sidebar = (props) => {
     const [markerDate, setMrkerDate] = useState(props.markerDate)
@@ -24,6 +26,7 @@ const Sidebar = (props) => {
         getEditMarkerActive()
     }
 
+    console.log(props.eventValue)
     return (
         <div className={style.sidebar}>
             <div className={style.logo}>
@@ -58,6 +61,7 @@ const Sidebar = (props) => {
             {props.marker && <ContainerMarkerModal/>}
 
             {props.editMarker && <ContainerEditMarkerModal/>}
+            {props.info && <InfoModal eventValue={props.eventValue} locationInfo={props.locationInfo}/>}
             <Toaster
                 position="top-center"
                 reverseOrder={false}

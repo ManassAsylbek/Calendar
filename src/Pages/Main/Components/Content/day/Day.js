@@ -3,6 +3,7 @@ import style from "./Day.module.css"
 import logoTime from "../../../../../Media/icons/logoTime.svg"
 import {times} from "../../../../../Constants/constants"
 import Event from "../Event/Event";
+import ContainerInfoModal from "../../../../../Components/InfoModal/ContainerInfoModal";
 
 const Day = (props) => {
     return (
@@ -36,6 +37,7 @@ const Day = (props) => {
                 </div>
             </div>
         </div>
+
     );
 };
 

@@ -1,0 +1,54 @@
+
+.Content {
+    display: grid;
+    gap: 12px;
+    width: 240px;
+    padding: 16px 20px;
+    background: #F8FAFF;
+    box-shadow: 0px 2px 25px rgba(136, 136, 136, 0.35);
+    border-radius: 8px;
+    z-index: 10;
+}
+
+
+.Content h4 {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 17px;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    color: rgba(46, 46, 46, 0.5);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+
+}
+
+.header h2 {
+    margin: 0;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 23px;
+padding: 0;
+    color: rgba(46, 46, 46, 0.5);
+}
+.Content div{
+    display: flex;
+   align-content: center;
+    gap: 12px;
+}
+
+.marker span{
+    width: 16px;
+    height: 16px;
+    border-radius: 5px;
+}

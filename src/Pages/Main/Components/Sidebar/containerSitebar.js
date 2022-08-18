@@ -25,6 +25,7 @@ const ContainerApiSidebar = (props) => {
         getMarkerDate()
     }
 
+    console.log()
 
     useEffect(getMarker, [props.updateStore])
     return (
@@ -39,6 +40,10 @@ const ContainerApiSidebar = (props) => {
                  marker={props.marker}
                  editMarker={props.editMarker}
                  markerDate={props.markerDate}
+                 info={props.info}
+                 eventValue={props.eventValue}
+                 locationInfo={props.locationInfo}
+
         />
     )
 }
@@ -52,6 +57,11 @@ let mapStateToProps = (state) => {
         editMarker: state.mainPage.editMarker,
         markerDate: state.mainPage.markerDate,
         updateStore: state.mainPage.updateStore,
+        info: state.mainPage.info,
+        eventValue: state.mainPage.eventValue,
+        locationInfo: state.mainPage.locationInfo,
+
+
 
     }
 }

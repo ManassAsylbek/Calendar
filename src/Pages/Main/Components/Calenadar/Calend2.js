@@ -11,17 +11,7 @@ import moment from "moment";
 const App = (props) => {
     const [offsetY, setOffsetY] = useState(200)
     const [offsetX, setOffsetX] = useState(200)
-    let handleWheel=(event)=> {
-        let currentTargetRect = event.currentTarget.getBoundingClientRect();
-        const event_offsetX = event.pageX-280,
-            event_offsetY = event.pageY-80;
-        setOffsetX(event_offsetX)
-        setOffsetY(event_offsetY)
 
-
-        /*console.log(event_offsetX)
-        console.log(event_offsetY)*/
-    }
 
     const getListData = (value) => {
         let listData = [];
@@ -39,33 +29,29 @@ const App = (props) => {
             ? props.setEditActive(true)
             : props.setEventActive(true)
     }
-    const getInfoActive = () => {
-        props.setInfoActive(true)
 
-    }
-    const getLocationInfo = (location) => {
-        props.setLocationInfo(location)
-
-    }
 
     const dateCellRender = (event) => {
 
 
-        const getEventValue = (item) => {
-            props.setEventValue(item)
+        const getInfoActive = () => {
+            props.setInfoActive(true)
+
         }
+        let handleWheel = (event) => {
 
-        let handleWheel=(event,item)=> {
-            let location = {x:0,y:0}
-            location.x = event.pageX
-            location.y  = event.pageY-80
+            /*let currentTargetRect = event.currentTarget.getBoundingClientRect();*/
 
-            getLocationInfo(location)
-
+            const event_offsetX = event.pageX - 280,
+                event_offsetY = event.pageY - 80;
+            setOffsetX(event_offsetX)
+            setOffsetY(event_offsetY)
             getInfoActive()
-            getEventValue(item)
-            /*console.log(event_offsetX)
-            console.log(event_offsetY)*/
+
+        }
+        const getEventValue = (event, item) => {
+            props.setEventValue(item)
+            handleWheel(event)
         }
 
 
@@ -75,7 +61,7 @@ const App = (props) => {
                 ? props.setEventActive(false)
                 : props.setEventActive(true)}>
                 {listData.map((item) => (
-                    <li key={item.title} onClick={() => getEvent(item)} style={{position:"relative"}}>
+                    <li key={item.title} onClick={() => getEvent(item)} style={{position: "relative"}}>
                        <span style={{
                            background: item.marker,
                            width: 10,
@@ -84,13 +70,11 @@ const App = (props) => {
                            borderRadius: 10,
                            marginRight: 5,
                        }}
-                             className="markerCalendar" onClick={() => getEventValue(item)}
-                             onMouseEnter={(e)=>handleWheel(e,item)}>ff..</span>
-                        <span style={{marginRight: 5}} onClick={() => getEventValue(item)}>{item.startTime}
-                            onMouseEnter={(e)=>handleWheel(e,item)}</span>
+                             className="markerCalendar" onClick={() => getEventValue(item)}>ff..</span>
+                        <span style={{marginRight: 5}} onClick={() => getEventValue(item)}>{item.startTime}</span>
                         <span onClick={() => getEventValue(item)}
-                              onMouseEnter={(e)=>handleWheel(e,item)}
-                        onMouseOut={()=>props.setInfoActive(false)}>{item.title}</span>
+                              onMouseEnter={(e) => getEventValue(e,item)}>
+                            {item.title}</span>
 
                     </li>
                 ))}
@@ -116,6 +100,8 @@ const App = (props) => {
                     ? props.setEventActive(false)
                     : props.setEventActive(true)}
             />
+            <div className="window" style={{position: "absolute", top: offsetY, left: offsetX, zIndex: 15}}></div>
+
         </div>
     )
 };

@@ -1,6 +1,13 @@
 * {
     margin: 0;
+position: relative;
     padding: 0;
+}
+
+.window{
+    background: #979797;
+    width: 200px;
+    height: 50px;
 }
 
 .events {
@@ -8,17 +15,30 @@
     padding: 0;
     list-style: none;
 }
-
-.events .ant-badge-status {
+.markerCalendar{
+    background: brown;
+    width: 10px;
+    height: 10px;
+}
+events label{
+    background: brown!important;
+    width: 10px!important;
+    height: 10px !important;
+}
+.events li {
     width: 100%;
     overflow: hidden;
-    font-size: 12px;
+    margin-right: 5px;
     white-space: nowrap;
     text-overflow: ellipsis;
+    font-family: 'Inter';
+    font-style: normal;
+    font-size: 12px;
+
 }
 
 .notes-month {
-    font-size: 28px;
+    font-size: 25px;
     text-align: center;
 }
 
